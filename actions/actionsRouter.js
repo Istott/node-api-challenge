@@ -19,7 +19,7 @@ router.get('/', (req, res) => {
       });
 });
 
-router.post('/:id/actions', (req, res) => {
+router.post('/:id/actions', validateAction, (req, res) => {
     // do your magic!
     const body = req.body;
     body.project_id = req.params.id
@@ -36,16 +36,6 @@ router.post('/:id/actions', (req, res) => {
       });
 });
 
-// function validatePost(req, res, next) {
-//     // do your magic!
-//     const post = req.body
-    
-//     if(post.text) {
-//       next()
-//     } else {
-//       res.status(400).json({message: "missing post data"});
-//     }
-// }
 
 router.delete("/:id", (req, res) => {
     Actions.remove(req.params.id)
@@ -83,5 +73,19 @@ router.put("/:id", (req, res) => {
         });
       });
   });
+
+
+  /////middleware////
+
+function validateAction(req, res, next) {
+// do your magic!
+    const project = req.body
+
+    if(project.project_id >= 3) {
+        res.status(400).json({message: "missing project data"});
+    } else {
+        next()
+    }
+}
 
 module.exports = router;
