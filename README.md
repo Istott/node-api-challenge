@@ -40,13 +40,24 @@ Demonstrate your understanding of this Sprint's concepts by answering the follow
 
 - [ ] Mention two parts of Express that you learned about this week.
 
+1.  Express’ middleware stack is basically an array of functions.
+    express is a framework based on node.
+
 - [ ] Describe Middleware?
+
+2. middleware are functions that have access to the err, req and res objects and the next function
 
 - [ ] Describe a Resource?
 
+3.  a program that is designed to carry out operations for a specific purpose
+
 - [ ] What can the API return to help clients know if a request was successful?
 
+4. You can build out validations that will inform the client what type of errors if it failed. and success codes like 200 or 201 to let them know it was successful.
+
 - [ ] How can we partition our application into sub-applications?
+
+5. By organizing and seperating code into files and folders so that things stay clean and tidy and easy to keep track of as the application gets bigger.
 
 ## Minimum Viable Product
 
