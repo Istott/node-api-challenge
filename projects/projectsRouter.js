@@ -18,6 +18,25 @@ router.get('/', (req, res) => {
       });
 });
 
+router.get('/:id/actions', (req, res) => {
+    // do your magic!
+    Projects.getProjectActions(req.params.id)
+    .then(actions => {
+      if (actions) {
+        res.status(200).json(actions);
+      } else {
+        res.status(404).json({ message: "project actions not found" });
+      }
+    })
+    .catch(error => {
+      // log error to database
+      console.log(error);
+      res.status(500).json({
+        message: "Error retrieving the project actions",
+      });
+    });
+  });
+
 router.post('/', (req, res) => {
     Projects.insert(req.body)
   
